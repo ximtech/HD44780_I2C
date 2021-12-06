@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.20)
+project(HD44780_LCD_I2C C)
+
+set(CMAKE_C_STANDARD 99)
+
+include(cmake/CPM.cmake)
+
+CPMAddPackage(
+        NAME STM32Core
+        GITHUB_REPOSITORY ximtech/STM32Core
+        GIT_TAG origin/main)
+
+set(SOURCE_FILES ${PROJECT_NAME}.c include/${PROJECT_NAME}.h)
+add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
+set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
+
+add_subdirectory(${STM32_CORE_SOURCE_DIR}/I2C/Polling)
+target_link_libraries(${PROJECT_NAME}.elf I2C_Polling)
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}.h
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
+
+install(TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}Export
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME})
+
+install(EXPORT ${PROJECT_NAME}Export
+        FILE ${PROJECT_NAME}-config.cmake
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME})
