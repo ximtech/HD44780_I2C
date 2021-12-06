@@ -1,2 +1,2 @@
-# HD44780_I2C
-LCD Display Module
+# HD44789_I2C
+I2C LCD Display Module
