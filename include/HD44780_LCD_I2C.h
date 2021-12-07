@@ -8,8 +8,8 @@
 #define LCD_COL_COUNT 20
 #define LCD_ROW_COUNT 4
 
-#define HD44789_LCD_I2C_DEVICE_ADDRESS 0x4e
-#define HD44789_LCD_I2C_TIMEOUT_MS 1000
+#define HD44780_LCD_I2C_DEVICE_ADDRESS 0x4e
+#define HD44780_LCD_I2C_TIMEOUT_MS 1000
 
 // Basic commands
 #define LCD_CLEAR_DISPLAY 0x01            // Clear the display screen. Execution Time: 1.64ms

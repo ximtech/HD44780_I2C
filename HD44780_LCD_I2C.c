@@ -6,7 +6,7 @@
 #define LCD_EN 2
 #define LCD_BL 3
 
-static I2C i2c = {0};
+static I2C_Polling i2c = {0};
 
 static uint8_t displayControlParameters;
 static char formatBuffer[LCD_COL_COUNT + 1];
@@ -22,9 +22,9 @@ uint8_t barProgress = 0;
 
 
 I2CStatus initLCD(I2C_TypeDef *I2Cx) {
-    i2c = initI2C(I2Cx, I2C_ADDRESSING_MODE_7BIT, HD44789_LCD_I2C_TIMEOUT_MS);
+    i2c = initI2C(I2Cx, I2C_ADDRESSING_MODE_7BIT, HD44780_LCD_I2C_TIMEOUT_MS);
 
-    I2CStatus status = isDeviceReady(&i2c, HD44789_LCD_I2C_DEVICE_ADDRESS);
+    I2CStatus status = isDeviceReady(&i2c, HD44780_LCD_I2C_DEVICE_ADDRESS);
     if (status != I2C_OK) {
         return status;
     }
@@ -41,7 +41,7 @@ I2CStatus initLCD(I2C_TypeDef *I2Cx) {
 }
 
 void commandLCD(uint8_t command) {
-    if (startAsMasterI2C(&i2c, HD44789_LCD_I2C_DEVICE_ADDRESS, I2C_WRITE_TO_SLAVE) == I2C_OK) {
+    if (startAsMasterI2C(&i2c, HD44780_LCD_I2C_DEVICE_ADDRESS, I2C_WRITE_TO_SLAVE) == I2C_OK) {
         // send higher bits to LCD
         uint8_t LCD = 0;
         LCD |= (command & 0xF0);  // get upper 4 bits
@@ -77,7 +77,7 @@ void commandLCD(uint8_t command) {
 }
 
 void printLCDChar(unsigned char charData) {
-    if (startAsMasterI2C(&i2c, HD44789_LCD_I2C_DEVICE_ADDRESS, I2C_WRITE_TO_SLAVE) == I2C_OK) {
+    if (startAsMasterI2C(&i2c, HD44780_LCD_I2C_DEVICE_ADDRESS, I2C_WRITE_TO_SLAVE) == I2C_OK) {
         // send higher bits to LCD
         uint8_t LCD = 0;
         LCD |= (charData & 0xF0);   // get upper 4 bits
