@@ -4,11 +4,11 @@
 
 ### LCD 16x2
 
-![Image](https://github.com/ximtech/HD44780_I2C/blob/main/example/LCD16x2.jpg)
+<img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/LCD16x2.PNG" alt="image" width="300"/>
 
 ### LCD 20x4
 
-![Image](https://github.com/ximtech/HD44780_I2C/blob/main/example/LCD20x4.jpg)
+<img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/LCD20x4.PNG" alt="image" width="300"/>
 
 ### Add as CPM project dependency
 
@@ -44,10 +44,9 @@ add_subdirectory(${HD44780_LCD_I2C_SOURCE_DIR})
 ## Wiring
 
 - PCF8574 port extender pinout:\
-  ![Image](https://github.com/ximtech/HD44780_I2C/blob/main/example/PCF8574_pinout.jpg)
-  ![Image](https://github.com/ximtech/HD44780_I2C/blob/main/example/soldering_view.jpg)
-
-
+- <img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/PCF8574_pinout.PNG" alt="image" width="300"/>
+- <img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/soldering_view.PNG" alt="image" width="300"/>
+  
 ## Usage
 In `HD44780_LCD_I2C.h` default defines. Override them in `main.h` if needed
 ```c
