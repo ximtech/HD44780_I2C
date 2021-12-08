@@ -5,13 +5,16 @@
 #include <stdbool.h>
 #include "I2C_Polling.h"
 
-#if !defined(HD44780_LCD_COL_COUNT) && !defined(HD44780_LCD_ROW_COUNT)
+#if !defined(HD44780_LCD_COL_COUNT) || !defined(HD44780_LCD_ROW_COUNT)
 #define HD44780_LCD_COL_COUNT 20
 #define HD44780_LCD_ROW_COUNT 4
 #endif
 
-#if !defined(HD44780_LCD_I2C_DEVICE_ADDRESS) && !defined(HD44780_LCD_I2C_TIMEOUT_MS)
+#ifndef HD44780_LCD_I2C_DEVICE_ADDRESS
 #define HD44780_LCD_I2C_DEVICE_ADDRESS 0x4e
+#endif
+
+#ifndef HD44780_LCD_I2C_TIMEOUT_MS
 #define HD44780_LCD_I2C_TIMEOUT_MS 1000
 #endif
 
