@@ -2,6 +2,13 @@
 
 **STM32** LL(Low Layer) library for I2C LCD. Works for both 16x2 LCD and 20x4 LCD etc.
 
+### Features
+
+- Small code footprint
+- Supports progress bar
+- Display printf function
+- No HAL dependencies
+
 ### LCD 16x2
 
 <img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/LCD16x2.PNG" alt="image" width="300"/>
@@ -46,13 +53,17 @@ add_subdirectory(${HD44780_LCD_I2C_SOURCE_DIR})
 - PCF8574 port extender pinout:\
 - <img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/PCF8574_pinout.PNG" alt="image" width="300"/>
 - <img src="https://github.com/ximtech/HD44780_I2C/blob/main/example/soldering_view.PNG" alt="image" width="300"/>
-  
+
 ## Usage
+
 In `HD44780_LCD_I2C.h` default defines. Override them in `main.h` if needed
+
 ```c
 #define HD44780_LCD_COL_COUNT 20
 #define HD44780_LCD_ROW_COUNT 4
 #define HD44780_LCD_I2C_DEVICE_ADDRESS 0x4e // default PCF8574 address
 ```
-- If address differs, use scan mode: [example](https://github.com/ximtech/STM32Core/blob/main/I2C/Polling/example/example.c)
+
+- If address differs, use scan
+  mode: [example](https://github.com/ximtech/STM32Core/blob/main/I2C/Polling/example/example.c)
 - Usage example: [link](https://github.com/ximtech/HD44780_I2C/blob/main/example/example.c)
