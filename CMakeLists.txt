@@ -5,6 +5,11 @@ set(CMAKE_C_STANDARD 99)
 
 include(cmake/CPM.cmake)
 
+CPMAddPackage(
+        NAME STM32Core
+        GITHUB_REPOSITORY ximtech/STM32Core
+        GIT_TAG origin/main)
+
 set(HD44780_LCD_I2C_DIRECTORY
         ${I2C_POLLING_DIRECTORY}
         ${HD44780_LCD_I2C_SOURCE_DIR}
@@ -18,6 +23,3 @@ set(HD44780_LCD_I2C_SOURCES
         CACHE STRING "HD44780 LCD I2C source files include to the main project" FORCE)
 
 link_directories(${I2C_POLLING_DIRECTORY})
-link_libraries(I2C_Polling)
-
-include_directories(${HD44780_LCD_I2C_DIRECTORY})
