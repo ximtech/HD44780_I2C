@@ -21,5 +21,3 @@ set(HD44780_LCD_I2C_SOURCES
         ${HD44780_LCD_I2C_SOURCE_DIR}/${PROJECT_NAME}.c
         ${HD44780_LCD_I2C_SOURCE_DIR}/include/${PROJECT_NAME}.h
         CACHE STRING "HD44780 LCD I2C source files include to the main project" FORCE)
-
-link_directories(${I2C_POLLING_DIRECTORY})
