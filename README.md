@@ -20,9 +20,6 @@
 ### Add as CPM project dependency
 
 How to add CPM to the project, check the [link](https://github.com/cpm-cmake/CPM.cmake)
-
-- Add STM32Core package dependency: [link](https://github.com/ximtech/STM32Core)
-
 ```cmake
 CPMAddPackage(
         NAME HD44780_I2C
@@ -39,11 +36,13 @@ CPMAddPackage(
 4. Add sources to project:
 
 ```cmake
-include_directories(${includes} ${HD44780_LCD_I2C_DIRECTORY})   # source directories
-file(GLOB_RECURSE SOURCES ${sources} ${HD44780_LCD_I2C_SOURCES})    # source files
+add_subdirectory(${STM32_CORE_SOURCE_DIR}/I2C/Polling)  # add I2C dependency
 
-add_subdirectory(${STM32_CORE_SOURCE_DIR}/I2C/Polling)  # add I2C dependency, core package must be included before
-add_subdirectory(${HD44780_LCD_I2C_SOURCE_DIR})
+include_directories(${includes} 
+        ${HD44780_LCD_I2C_DIRECTORY})   # source directories
+
+file(GLOB_RECURSE SOURCES ${sources} 
+        ${HD44780_LCD_I2C_SOURCES})    # source files
 ```
 
 3. Then Build -> Clean -> Rebuild Project
